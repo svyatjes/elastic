@@ -1,0 +1,40 @@
+// основной бакет содержит все отправления в Гродно, и подбакеты из каждого города (кроме Бреста) в гродно, получаем 2 результата с наибольшим score в каждом подбакете
+
+GET train_timetable/_search
+{
+  "size": 0,
+  "query": {
+    "bool": {
+      "must": [
+        {
+          "match": {
+            "arrival_city": "Гродно"
+          }
+        }
+      ],
+      "must_not": [
+        {
+          "term": {
+            "departure_city": {
+              "value": "Брест"
+            }
+          }
+        }
+      ]
+    }
+  },
+  "aggs": {
+    "ways": {
+      "terms": {
+        "field": "departure_city"
+      },
+      "aggs": {
+        "arrival_cities_top_hits":{
+          "top_hits": {
+            "size": 2
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,31 @@
+PUT /esl_stack
+{
+  "settings": {
+    "number_of_shards": 3,
+    "number_of_replicas": 3
+  }
+}
+
+PUT /esl_stack/_doc/1
+{
+  "region":"europe-west3-a",
+  "name":"instance-0000000000",
+  "node":"master eligible, data, ingest",
+  "is_master": false
+}
+
+PUT /esl_stack/_doc/2
+{
+  "region":"europe-west3-b",
+  "name":"tiebreaker-0000000002",
+  "node":"master eligible",
+  "is_master": true
+}
+
+PUT /esl_stack/_doc/3
+{
+  "region":"europe-west3-c",
+  "name":"instance-0000000001",
+  "node":"master eligible, data, ingest",
+  "is_master": false
+}

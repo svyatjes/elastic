@@ -1,0 +1,108 @@
+PUT /train_timetable
+{
+  "settings": {},
+  "mappings": {
+    "dynamic_templates": [
+      {
+        "string_field": {
+          "match_mapping_type": "string",
+          "mapping":{
+            "type": "keyword"
+          }
+        }
+      }
+    ], 
+    "properties":{
+      "departure_city": {
+        "type": "keyword"
+      },
+      "arrival_city": {
+        "type": "keyword"
+      },
+      "departure_time": {
+        "type": "date"
+      },
+      "arrival_time": {
+        "type": "date"
+      },
+      "way": {
+        "type": "integer",
+        "index": false
+      },
+      "train_id": {
+        "type": "keyword",
+        "doc_values": false
+      },
+      "describe":{
+        "type": "text"
+      }
+    }
+  }
+}
+
+
+PUT train_timetable/_doc/1
+{
+  "departure_city": "Витебск",
+  "arrival_city": "Гродно",
+  "departure_time": "2022-05-17T15:18:00",
+  "arrival_time": "2022-05-17T19:10:00",
+  "way": 3,
+  "train_id": "679Б",
+  "describe": "Межрегиональные линии бизнес-класса"
+}
+
+PUT train_timetable/_doc/2
+{
+  "departure_city": "Брест",
+  "arrival_city": "Полоцк",
+  "departure_time": "2022-05-20T17:48:00",
+  "arrival_time": "2022-05-20T23:55:00",
+  "way": 1,
+  "train_id": "879",
+  "describe": "Региональные линии экономкласса"
+}
+
+PUT train_timetable/_doc/3
+{
+  "departure_city": "Гомель",
+  "arrival_city": "Гродно",
+  "departure_time": "2022-05-17T23:28:00",
+  "arrival_time": "2022-05-18T06:34:00",
+  "way": 4,
+  "train_id": "631Б",
+  "describe": "Межрегиональные линии экономкласса"
+}
+
+PUT train_timetable/_doc/6
+{
+  "departure_city": "Гомель",
+  "arrival_city": "Гродно",
+  "departure_time": "2022-05-22T12:38:00",
+  "arrival_time": "2022-05-22T16:34:00",
+  "way": 4,
+  "train_id": "6372",
+  "describe": "Межрегиональные линии бизнес-класса"
+}
+
+PUT train_timetable/_doc/5
+{
+  "departure_city": "Гомель",
+  "arrival_city": "Минск",
+  "departure_time": "2022-05-18T06:28:00",
+  "arrival_time": "2022-05-18T12:34:00",
+  "way": 5,
+  "train_id": "631Б",
+  "describe": "Межрегиональные линии экономкласса"
+}
+
+PUT train_timetable/_doc/4
+{
+  "departure_city": "Могилев",
+  "arrival_city": "Орша",
+  "departure_time": "2022-05-25T05:38:00",
+  "arrival_time": "2022-05-25T10:20:00",
+  "way": 2,
+  "train_id": "6553",
+  "describe": "региональные линии экономкласса"
+}
